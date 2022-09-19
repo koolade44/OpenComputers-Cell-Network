@@ -1,9 +1,19 @@
 -- Firmware for microcontroller relays
 
+-- TEST --
+local component = require("component")
+local computer = component.computer
+-- TEST --
+
 local m = component.proxy(component.list("modem")())
 
 while true do
     local name, data = computer.pullSignal()
+
+    -- TEST --
+    io.write(name)
+    -- TEST --
+
     if (name == "modem_message") then
         local port = data[3]
         local message = data[5]
