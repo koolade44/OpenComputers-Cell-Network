@@ -1,10 +1,5 @@
 -- Firmware for microcontroller relays
 
--- TEST --
-local component = require("component")
-local computer = component.computer
--- TEST --
-
 local m = component.proxy(component.list("modem")())
 
 while true do
