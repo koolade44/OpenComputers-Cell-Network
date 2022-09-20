@@ -1,10 +1,18 @@
-local uuid = require("uuid")
 local component = require("component")
 local card_writer = component.os_cardwriter
 
+math.randomseed(os.time())
+
+local function generateId()
+    local template = "xxxx-xxxx-xxxx-xxxx"
+    string.gsub(template, '[x]', function(c)
+        local v = (c == "x") and math.random(0, 0xf)
+        return string.format('%x', v)
+    end)
+end
+
 io.write("beginning writing of debit card")
-uuid.seed()
-local data = uuid()
+local data = generateId()
 validPin = false
 local pin
 
