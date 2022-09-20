@@ -5,8 +5,8 @@ math.randomseed(os.time())
 
 local function generateId()
     local template = "xxxx-xxxx-xxxx-xxxx"
-    string.gsub(template, '[x]', function(c)
-        local v = (c == "x") and math.random(0, 0xf)
+    return string.gsub(template, '[x]', function(c)
+        local v = (c == "x") and math.random(0, 9)
         return string.format('%x', v)
     end)
 end
