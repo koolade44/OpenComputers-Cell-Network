@@ -11,7 +11,7 @@ local function generateId()
     end)
 end
 
-io.write("beginning writing of debit card")
+io.write("Beginning writing of debit card\n")
 local data = generateId()
 validPin = false
 local pin
@@ -19,7 +19,7 @@ local pin
 while validPin == false do
     io.write("Please insert a 4 digit numerical pin: ")
     local input = io.read()
-    if pcall(function() pin = tonumber(input) end) and #pin == 4 then
+    if pcall(function() pin = tonumber(input) end) and #input == 4 then
         validPin = true
     else
         io.write("\n" .. pin .. " is not a valid 4 digit numerical pin. Please try again\n")
