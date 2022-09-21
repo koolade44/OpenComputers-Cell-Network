@@ -24,6 +24,7 @@ else if response == "r" then
     io.write("\nBroadcasting link request")
     modem.broadcast(12, "requestLink")
     local _, _, from, _, _, message = event.pull("modem_message")
-    if message == "linkSuccess" then io.write("Successfully linked as receiver to " .. from) end
+    while message ~= "linkSuccess" do _, _, from, _, _, message = event.pull("modem_message") end
+    io.write("Successfully linked as receiver to " .. from)
 end
 end
