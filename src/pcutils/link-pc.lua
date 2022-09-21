@@ -11,12 +11,10 @@ local response = io.read()
 if response == "s" then
     io.write("\nAwaiting link request from receiving computer")
     local _, _, from, _, _, message = event.pull("modem_message")
-    if message == "requestLink" and pcall(function()
+    if message == "requestLink" then
         local dataFile = io.open("/linked-device-information", "w+")
         dataFile:write(from)
         dataFile:close()
-    end)
-    then
         modem.send(from, 12, "linkSuccess")
         io.write("Successfully linked as sender for " .. from)
     end
